@@ -1,11 +1,13 @@
 <a-scene 
-  mindar-image="imageTargetSrc: https://iaml1r.github.io/darscenes/stuff/test.mind;" 
+  mindar-image="imageTargetSrc: https://iaml1r.github.io/darscenes/stuff/test.mind; uiScanning: #my-scanning-image;" 
   color-space="sRGB" 
   renderer="colorManagement: true, physicallyCorrectLights" 
   vr-mode-ui="enabled: false" 
   device-orientation-permission-ui="enabled: false">
 
   <a-assets>
+    <img id="my-scanning-image" src="stuff/test_hold.jpeg" />
+
     <!-- Marker image -->
     <img id="card" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.png" />
     
