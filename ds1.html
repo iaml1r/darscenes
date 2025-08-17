@@ -1,0 +1,71 @@
+  <div id="example-scanning-overlay" class="hidden">
+    <img src="https://iaml1r.github.io/darscenes/stuff/ds1.png">
+  </div>
+
+<a-scene 
+  mindar-image="imageTargetSrc: https://iaml1r.github.io/darscenes/stuff/ds1.dar; uiScanning: #example-scanning-overlay;" 
+  color-space="sRGB" 
+  renderer="colorManagement: true, physicallyCorrectLights" 
+  vr-mode-ui="enabled: false" 
+  device-orientation-permission-ui="enabled: false">
+
+  <a-assets>
+<!--     <img id="my-scanning-image" src="https://iaml1r.github.io/darscenes/stuff/test_hold.jpeg"/> -->
+
+    <!-- Marker image -->
+    <img id="card" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.png" />
+    
+    <!-- GLTF model -->
+    <a-asset-item id="avatarModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/softmind/scene.gltf"></a-asset-item>
+    
+    <!-- Video -->
+    <video 
+      id="example-video" 
+      src="https://iaml1r.github.io/darscenes/stuff/ds1_v.mp4" 
+      preload="auto" 
+      playsinline 
+      webkit-playsinline 
+      crossorigin="anonymous">
+    </video>
+  </a-assets>
+
+<a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;" raycaster="far: ${customFields.libVersion}; objects: .clickable"></a-camera>
+
+
+  <a-entity mindar-image-target="targetIndex: 0">
+    <!-- Model -->
+    <a-gltf-model 
+      rotation="0 0 0" 
+      position="0 0 0.1" 
+      scale="0.005 0.005 0.005" 
+      src="#avatarModel"
+      animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
+    </a-gltf-model>
+
+    <!-- Video plane -->
+    <a-plane 
+      id="example-plane" 
+      src="#example-video" 
+      position="0 -0.3 0" 
+      height="0.552" 
+      width="1" 
+      rotation="0 0 0"
+      class="clickable">
+
+    </a-plane>
+  </a-entity>
+</a-scene>
+
+<script>
+  const videoEl = document.querySelector('#example-video');
+  const planeEl = document.querySelector('#example-plane');
+
+  // On click, play video
+  planeEl.addEventListener('click', () => {
+    if (videoEl.paused) {
+      videoEl.play();
+    } else {
+      videoEl.pause();
+    }
+  });
+</script>
