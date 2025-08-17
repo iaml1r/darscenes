@@ -25,7 +25,9 @@
       preload="auto" 
       playsinline 
       webkit-playsinline 
-      crossorigin="anonymous">
+      crossorigin="anonymous"
+      loop
+      >
     </video>
   </a-assets>
 
@@ -34,19 +36,19 @@
 
   <a-entity mindar-image-target="targetIndex: 0">
     <!-- Model -->
-    <a-gltf-model 
+<!--     <a-gltf-model 
       rotation="0 0 0" 
       position="0 0 0.1" 
       scale="0.005 0.005 0.005" 
       src="#avatarModel"
       animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
-    </a-gltf-model>
+    </a-gltf-model> -->
 
     <!-- Video plane -->
     <a-plane 
       id="example-plane" 
       src="#example-video" 
-      position="0 -0.3 0" 
+      position="0 0 0" 
       height="0.552" 
       width="1" 
       rotation="0 0 0"
