@@ -1,0 +1,122 @@
+  <div id="example-scanning-overlay" class="hidden">
+    <img src="https://iaml1r.github.io/darscenes/stuff/fzid.png">
+  </div>
+
+<a-scene 
+  mindar-image="imageTargetSrc: https://iaml1r.github.io/darscenes/stuff/fzid.dar; uiScanning: #example-scanning-overlay; filterMinCF:0.001; filterBeta: 0.001 ;"  
+  color-space="sRGB" 
+  renderer="colorManagement: true, physicallyCorrectLights" 
+  vr-mode-ui="enabled: false" 
+  device-orientation-permission-ui="enabled: false">
+<a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;" raycaster="far: ${customFields.libVersion}; objects: .clickable"></a-camera>
+
+<a-assets>
+<!--     <img id="my-scanning-image" src="https://iaml1r.github.io/darscenes/stuff/test_hold.jpeg"/> -->
+<img id="play_btn" src="https://iaml1r.github.io/darscenes/stuff/play_btn.png"/>
+<img id="info" src="https://iaml1r.github.io/darscenes/stuff/fzid_hr_info.png"/>
+
+    <!-- Marker image -->
+    <img id="card" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.png" />
+    
+    <!-- GLTF model -->
+<!--     <a-asset-item id="avatarModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/softmind/scene.gltf"></a-asset-item> -->
+    
+    <!-- Video -->
+    <video 
+      id="example-video" 
+      src="https://iaml1r.github.io/darscenes/stuff/fzid_hvid.mp4" 
+      preload="auto" 
+      playsinline 
+      webkit-playsinline 
+      crossorigin="anonymous"
+      loop
+      >
+       <video 
+      id="vvid" 
+      src="https://iaml1r.github.io/darscenes/stuff/fzid_vvid.mp4" 
+      preload="auto" 
+      playsinline 
+      webkit-playsinline 
+      crossorigin="anonymous"
+      loop
+      >
+    </video>
+  </a-assets>
+
+      
+  <a-entity mindar-image-target="targetIndex: 0">
+    <a-plane 
+      id="example-plane" 
+      src="#example-video" 
+      position="0 1.5 0" 
+      height="0.7" 
+      width="1.4" 
+      rotation="0 0 0"
+      class="clickable">
+          <a-plane id="PlayBtn" src="#play_btn" position="0 0 0.1" height="0.3" width="0.3" rotation="0 0 0"  material="transparent: true"   class="clickable"></a-plane>
+
+    </a-plane>
+     <a-plane 
+      id="example-plane" 
+      src="#vvid" 
+      position="1.4 0 0" 
+      height="2" 
+      width="1.5" 
+      rotation="0 0 0"
+      class="clickable">
+    <a-plane id="vPlayBtn" src="#play_btn" position="0 0 0.1" height="0.3" width="0.3" rotation="0 0 0"  material="transparent: true"   class="clickable"></a-plane>
+    </a-plane>
+
+
+      <a-plane id="info" src="#info" position="-1 0 0.1" height="2" width="0.7" rotation="0 0 0"  material="transparent: true"   ></a-plane>
+        <a-plane transparen="true" opacity="0" id="call" position="-1 0.7 0.11" rotation="0 0 0" width="0.3" height="0.3" color="#7BC8A4" class="clickable"></a-plane>
+        <a-plane transparen="true" opacity="0" id="whatsapp" position="-1 0.2 0.11" rotation="0 0 0" width="0.3" height="0.3" color="#7BC8A4" class="clickable"></a-plane>
+       <a-plane transparen="true" opacity="0" id="mail" position="-1 -0.25 0.11" rotation="0 0 0" width="0.3" height="0.3" color="#7BC8A4" class="clickable"></a-plane>
+       <a-plane transparen="true" opacity="0" id="website" position="-1 -0.7 0.11" rotation="0 0 0" width="0.3" height="0.3" color="#7BC8A4" class="clickable"></a-plane>
+ </a-entity>
+</a-scene>
+<script>
+  const videoEl = document.querySelector('#example-video');
+  const planeEl = document.querySelector('#PlayBtn');
+  const playBtnEl = document.querySelector('#PlayBtn'); // select play button plane
+
+playBtnEl.addEventListener('click', () => {
+  if (videoEl.paused) {
+    videoEl.play();
+    playBtnEl.setAttribute('visible', 'false'); // hide play button
+  } else {
+    videoEl.pause();
+    playBtnEl.setAttribute('visible', 'true'); // show play button
+  }
+});
+
+  const vvid = document.querySelector('#vvid');
+  const vPlayBtn = document.querySelector('#vPlayBtn'); // select play button plane
+
+vPlayBtn.addEventListener('click', () => {
+  if (vvid.paused) {
+    vvid.play();
+    vPlayBtn.setAttribute('visible', 'false'); // hide play button
+  } else {
+    vvid.pause();
+    vPlayBtn.setAttribute('visible', 'true'); // show play button
+  }
+});
+
+
+
+document.querySelector('#call').addEventListener('click', () => {
+    window.location.href = "tel:+918296926878";
+});
+
+document.querySelector('#mail').addEventListener('click', () => {
+    window.location.href = "mailto:demaxdot0208@gmail.com";
+});
+
+document.querySelector('#whatsapp').addEventListener('click', () => {
+    window.open("https://wa.me/+918296926878", "_blank");
+});
+document.querySelector('#website').addEventListener('click', () => {
+    window.open("https://datarengineering.com/", "_blank");
+});
+</script>
