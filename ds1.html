@@ -55,21 +55,24 @@
       class="clickable">
 
     </a-plane>
-      <a-plane src="#play_btn" position="0 0 0.1" height="1" width="1" rotation="0 0 0"  material="transparent: true"></a-plane>
+      <a-plane id="PlayBtn" src="#play_btn" position="0 0 0.1" height="0.3" width="0.3" rotation="0 0 0"  material="transparent: true"   class="clickable"></a-plane>
 
   </a-entity>
 </a-scene>
 
 <script>
   const videoEl = document.querySelector('#example-video');
-  const planeEl = document.querySelector('#example-plane');
+  const planeEl = document.querySelector('#PlayBtn');
+  const playBtnEl = document.querySelector('#PlayBtn'); // select play button plane
 
-  // On click, play video
-  planeEl.addEventListener('click', () => {
-    if (videoEl.paused) {
-      videoEl.play();
-    } else {
-      videoEl.pause();
-    }
-  });
+playBtnEl.addEventListener('click', () => {
+  if (videoEl.paused) {
+    videoEl.play();
+    playBtnEl.setAttribute('visible', 'false'); // hide play button
+  } else {
+    videoEl.pause();
+    playBtnEl.setAttribute('visible', 'true'); // show play button
+  }
+});
+
 </script>
