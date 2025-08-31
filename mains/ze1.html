@@ -1,94 +1,94 @@
-  <div id="example-scanning-overlay" class="hidden">
-    <img src="/dart/ar/github/stuff/ze1.png">
-  </div>
-<a-scene 
-  mindar-image="imageTargetSrc: /dart/ar/github/stuff/ze1.dar; uiScanning: #example-scanning-overlay; filterMinCF:0.001; filterBeta: 0.001 ;"  
-  color-space="sRGB" 
-  renderer="colorManagement: true, physicallyCorrectLights" 
-  xr-mode-ui="enabled: false" 
-  device-orientation-permission-ui="enabled: false">
-<a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;" raycaster="far: ${customFields.libVersion}; objects: .clickable"></a-camera>
+    <div id="example-scanning-overlay" class="hidden">
+      <img src="/dart/ar/github/stuff/ze1.png">
+    </div>
+  <a-scene 
+    mindar-image="imageTargetSrc: /dart/ar/github/stuff/ze1.dar; uiScanning: #example-scanning-overlay; filterMinCF:0.001; filterBeta: 0.001 ;"  
+    color-space="sRGB" 
+    renderer="colorManagement: true, physicallyCorrectLights" 
+    xr-mode-ui="enabled: false" 
+    device-orientation-permission-ui="enabled: false">
+  <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;" raycaster="far: ${customFields.libVersion}; objects: .clickable"></a-camera>
 
-<a-assets>
-<!--     <img id="my-scanning-image" src="https://iaml1r.github.io/darscenes/stuff/test_hold.jpeg"/> -->
-<img id="play_btn" src="https://iaml1r.github.io/darscenes/stuff/play_btn.png"/>
-<video 
-id="zen_v" 
-src="/dart/ar/github/stuff/zen_v.mp4" 
-preload="auto" 
-playsinline 
-webkit-playsinline 
-crossorigin="anonymous"
-loop
-visible="false"
-></video>
-<a-asset-item id="glb1" src="/dart/ar/github/stuff/ze1_gl.glb"></a-asset-item>
+  <a-assets>
+  <!--     <img id="my-scanning-image" src="https://iaml1r.github.io/darscenes/stuff/test_hold.jpeg"/> -->
+  <img id="play_btn" src="https://iaml1r.github.io/darscenes/stuff/play_btn.png"/>
+  <video 
+  id="zen_v" 
+  src="/dart/ar/github/stuff/zen_v.mp4" 
+  preload="auto" 
+  playsinline 
+  webkit-playsinline 
+  crossorigin="anonymous"
+  loop
+  visible="false"
+  ></video>
+  <a-asset-item id="glb1" src="/dart/ar/github/stuff/ze1_gl.glb"></a-asset-item>
 
-<a-asset-item id="arby_gl" src="/dart/ar/github/stuff/bydd.glb"></a-asset-item>
-  </a-assets>
+  <a-asset-item id="arby_gl" src="/dart/ar/github/stuff/bydd.glb"></a-asset-item>
+    </a-assets>
+
+        
+    <a-entity mindar-image-target="targetIndex: 0">
+          <a-plane 
+        id="zen_v_plane"
+        position="0 0 0.1" 
+        height="0.6" 
+        width="1" 
+        rotation="0 0 0"
+        class="clickable"
+        material="shader: chromakey; src: #zen_v; color: 0 1 0"
+          >
+
+        </a-plane>
+            <a-plane id="PlayBtn" src="#play_btn" position="0 0 0.2" height="0.3" width="0.3" rotation="0 0 0"  material="transparent: true"   class="clickable"></a-plane>
+
+
+
+  <a-gltf-model
+  id="byddBtn"
+            rotation="0 0 0"
+            position="0 -0.4 0.1"
+            scale="0.2 0.2 0.2"
+            src="#arby_gl"
+            material="color: red"
+              class="clickable"
+          ></a-gltf-model>
+
 
       
-  <a-entity mindar-image-target="targetIndex: 0">
-         <a-plane 
-      id="zen_v_plane"
-      position="0 0 0.1" 
-      height="0.6" 
-      width="1" 
-      rotation="0 0 0"
-      class="clickable"
-      material="shader: chromakey; src: #zen_v; color: 0 1 0"
-        >
 
-      </a-plane>
-          <a-plane id="PlayBtn" src="#play_btn" position="0 0 0.2" height="0.3" width="0.3" rotation="0 0 0"  material="transparent: true"   class="clickable"></a-plane>
+      
+  <a-gltf-model
+            rotation="0 0 0"
+            position="0 0 0"
+            scale="0.2 0.2 0.2"
+            src="#glb1"
+            material="color: red"
+          ></a-gltf-model>
 
+        </a-entity>
+  </a-scene>
+  <script>
+    const videoEl = document.querySelector('#zen_v');
+    const planeEl = document.querySelector('#PlayBtn');
+    const playBtnEl = document.querySelector('#PlayBtn'); // select play button plane
 
-
- <a-gltf-model
- id="byddBtn"
-          rotation="0 0 0"
-          position="0 -0.4 0.1"
-          scale="0.2 0.2 0.2"
-          src="#arby_gl"
-           material="color: red"
-            class="clickable"
-        ></a-gltf-model>
-
-
-    
-
-    
- <a-gltf-model
-          rotation="0 0 0"
-          position="0 0 0"
-          scale="0.2 0.2 0.2"
-          src="#glb1"
-           material="color: red"
-        ></a-gltf-model>
-
-      </a-entity>
-</a-scene>
-<script>
-  const videoEl = document.querySelector('#zen_v');
-  const planeEl = document.querySelector('#PlayBtn');
-  const playBtnEl = document.querySelector('#PlayBtn'); // select play button plane
-
-playBtnEl.addEventListener('click', () => {
-  if (videoEl.paused) {
-    videoEl.play();
-    playBtnEl.setAttribute('visible', 'false'); // hide play button
-  } else {
-    videoEl.pause();
-    playBtnEl.setAttribute('visible', 'true'); // show play button
-  }
-});
+  playBtnEl.addEventListener('click', () => {
+    if (videoEl.paused) {
+      videoEl.play();
+      playBtnEl.setAttribute('visible', 'false'); // hide play button
+    } else {
+      videoEl.pause();
+      playBtnEl.setAttribute('visible', 'true'); // show play button
+    }
+  });
 
 
 
 
-byddBtn.addEventListener('click', () => {
-     window.open("https://demaxdot.com/", "_blank");
+  byddBtn.addEventListener('click', () => {
+      window.open("https://demaxdot.com/", "_blank");
 
-});
+  });
 
-</script>
+  </script>
