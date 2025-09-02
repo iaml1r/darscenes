@@ -68,8 +68,6 @@
 </a-scene>
 <script>
 
-  const bgMusic = new Audio('https://iaml1r.github.io/darscenes/stuff/fzc1_a.mp3');
-  bgMusic.loop = true; // loop forever
 
   
   const vvid = document.querySelector('#vvid');
@@ -78,12 +76,10 @@
 vPlayBtn.addEventListener('click', () => {
   if (vvid.paused) {
     vvid.play();
-          bgMusic.play();
 
     vPlayBtn.setAttribute('visible', 'false'); // hide play button
   } else {
     vvid.pause();
-          bgMusic.pause();
 
     vPlayBtn.setAttribute('visible', 'true'); // show play button
   }
