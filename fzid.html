@@ -17,7 +17,7 @@
       
     </script>
  <div id="example-scanning-overlay" class="hidden">
-    <img src="https://iaml1r.github.io/darscenes/stuff/fzid.png">
+    <img src="/dart/ar/github/stuff/fzid.png">
   </div>
 
 <a-scene 
@@ -32,8 +32,8 @@
 <a-assets>
 <!--     <img id="my-scanning-image" src="https://iaml1r.github.io/darscenes/stuff/test_hold.jpeg"/> -->
 <img id="play_btn" src="https://iaml1r.github.io/darscenes/stuff/play_btn.png"/>
-<img id="info" src="https://iaml1r.github.io/darscenes/stuff/fzid_hr_info.png"/>
-<img id="front" src="https://iaml1r.github.io/darscenes/stuff/front_fzid_i.jpeg"/>
+<img id="info" src="/dart/ar/github/stuff/fzid_hr_info.png"/>
+<img id="front" src="/dart/ar/github/stuff/front_fzid_i.jpeg"/>
 
     <!-- Marker image -->
     <img id="card" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.png" />
@@ -44,7 +44,7 @@
     <!-- Video -->
     <video 
       id="example-video" 
-      src="https://iaml1r.github.io/darscenes/stuff/fzid_hvid.mp4" 
+      src="/dart/ar/github/stuff/fzid_hvid.mp4" 
       preload="auto" 
       playsinline 
       webkit-playsinline 
@@ -53,7 +53,7 @@
       >
        <video 
       id="vvid" 
-      src="https://iaml1r.github.io/darscenes/stuff/fzid_vvid.mp4" 
+      src="/dart/ar/github/stuff/fzid_vvid.mp4" 
       preload="auto" 
       playsinline 
       webkit-playsinline 
@@ -74,7 +74,7 @@
       width="1.4" 
       rotation="0 0 0"
       class="clickable">
-          <a-plane   id="PlayBtn" src="#play_btn" position="0 0 0.1" height="0.3" width="0.3" rotation="0 0 0"  material="transparent: true"   class="clickable"></a-plane>
+          <a-plane   id="PlayBtn" src="#play_btn" position="0 -2.5 0.1" height="0.3" width="0.3" rotation="0 0 0"  material="transparent: true"   class="clickable"></a-plane>
 
     </a-plane>
      <a-plane 
@@ -85,7 +85,6 @@
       width="1.3" 
       rotation="0 0 0"
       class="clickable">
-    <a-plane id="vPlayBtn" src="#play_btn" position="0 0 0.1" height="0.3" width="0.3" rotation="0 0 0"  material="transparent: true"   class="clickable"></a-plane>
     </a-plane>
 
       <a-plane id="" src="#front" position="0 0 0" height="1.7" width="1" rotation="0 0 0"  material="transparent: true"   ></a-plane>
@@ -105,6 +104,7 @@
   const videoEl = document.querySelector('#example-video');
   const planeEl = document.querySelector('#PlayBtn');
   const playBtnEl = document.querySelector('#PlayBtn'); // select play button plane
+  const vvid = document.querySelector('#vvid');
 
 playBtnEl.addEventListener('click', () => {
   if (videoEl.paused) {
@@ -114,13 +114,7 @@ playBtnEl.addEventListener('click', () => {
     videoEl.pause();
     playBtnEl.setAttribute('visible', 'true'); // show play button
   }
-});
-
-  const vvid = document.querySelector('#vvid');
-  const vPlayBtn = document.querySelector('#vPlayBtn'); // select play button plane
-
-vPlayBtn.addEventListener('click', () => {
-  if (vvid.paused) {
+    if (vvid.paused) {
     vvid.play();
     vPlayBtn.setAttribute('visible', 'false'); // hide play button
   } else {
